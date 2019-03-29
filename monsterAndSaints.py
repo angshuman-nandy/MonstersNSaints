@@ -1,3 +1,16 @@
+def printInfo():
+    print("-------------------------------||| MONSTERS AND SAINTS |||-----------------------------------")
+    print("")
+    print("Three Monsters [m1,m2,m3] and three Saints[s1,s2,s3] are trying to cross the river using a boat")
+    print("The boat can carry at the max two passengers at a time, and the boat CANNOT row if its empty.")
+    print("Help them cross the river!!!!!")
+    print("However, the monsters and the saints have an understanding among them,")
+    print( "If anywhere (either in source or destination), the number of monsters are more than number of saints,")
+    print("then monsters will eat the saints and the game ends.")
+    print("")
+    print("---------------------------------------ALL THE BEST-----------------------------------------")
+    print("")
+	
 def printStatus(source,dest,boat_loc,boat):
     if boat_loc == "s":
          print("==Source=="+str(source)+"<_"+str(boat)+"_>~~~~~~~~~~~~~~~~~"+str(dest)+"==Destination==")
@@ -57,13 +70,13 @@ def fillBoat(source,dest,boat,boat_loc):
         cl = input("(y/n) - >")
         if(cl.lower() == "y"):
             if(boat_loc == "s"):
-                for b in boat:
-                    source.append(b)
-                    boat.remove(b)
+                for b in range(0,len(boat)):
+                    source.append(boat[b])
+                boat.clear()
             else:
-                for b in boat:
-                    dest.append(b)
-                    boat.remove(b)
+                for b in range(0,len(boat)):
+                    dest.append(boat[b])
+                boat.clear()
         else:
             loop = False
             print("boat not cleared!")
@@ -96,6 +109,7 @@ def fillBoat(source,dest,boat,boat_loc):
             print("wrong input!!! try again")
 			
 def initGame():
+    printInfo()
     source = ["m1","m2","m3","s1","s2","s3"]
     dest = []
     boat=[]
@@ -118,5 +132,6 @@ def initGame():
             printStatus(source,dest,boat_loc,boat)
             print("help!!!!! monsters are eating the saints... you lost")
             gameOn = False
+    
 
 initGame()
